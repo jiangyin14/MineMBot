@@ -4,6 +4,7 @@ import com.sun.net.httpserver.HttpServer;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import top.jiangyin14.minembot.handler.ActionHandler.GotoHandler;
 import top.jiangyin14.minembot.handler.InfoHandler.*;
 
 import java.io.IOException;
@@ -29,6 +30,7 @@ public class MineMBot implements ModInitializer {
 			httpServer.createContext("/v1/player/info/biome", new BiomeHandler());
 			httpServer.createContext("/v1/player/info/time", new TimeHandler());
 			httpServer.createContext("/v1/player/info/facing", new FacingHandler());
+			httpServer.createContext("/v1/player/action/goto", new GotoHandler());
 			httpServer.setExecutor(Executors.newCachedThreadPool());
 			httpServer.start();
 			LOGGER.info("HTTP server started on port 27632");
